@@ -1,0 +1,111 @@
+#include "header.h"
+
+/*
+** Push_swap program should receive as argument a list of integers. It has to
+** fill the stack A with theese numbers. And then, using a limited type of
+** instructions, with help of stack B (empty at the begining), get them sorted
+** with the smallest number at the top of stack A. It should use the smallest
+** list of instructions possible.
+*/
+
+int		main(int argc, char **argv)
+{
+	t_all	*all;
+	int		i;
+	char	**instructions;
+
+	if (argc != 2)
+		return (1);
+	all = (t_all *)malloc(sizeof(t_all));
+	if (!all)
+		ft_error(1);
+	all->a = NULL;
+	all->b = NULL;
+	ft_set_initial_stack(&all->a, argv);
+		instructions = read_stdin();
+	printf("\n");													//
+	ft_print_all_lists(all);										//
+	i = -1;
+	while (instructions[++i])
+	{
+		printf("\n%s\n", instructions[i]);							//
+		execute_instructions(instructions[i], all);
+		ft_print_all_lists(all);									//
+	}
+	is_stack_sorted(all);
+	return (0);
+}
+
+char	**read_stdin(void)
+{
+	int		ret;
+	char	*buf;
+	char	*tmp;
+	char	*line;
+	char	**instructions;
+
+	ret = 1;
+	line = strdup("");
+	while (ret > 0)
+	{
+		ret = get_next_line(0, &buf);
+		if (ret > 0)
+		{
+			tmp = ft_strjoin(line, buf);
+			free(buf);
+			free(line);
+			line = ft_strjoin(tmp, "\n");
+			free(tmp);
+		}
+	}
+	instructions = ft_split(line, '\n');
+	free(line);
+	return (instructions);
+}
+
+void	execute_instructions(char *ins, t_all *all)
+{
+	if (ins[0] == 's' && ins[1] == 'a' && ins[2] == '\0')
+		ft_sa(all);
+	else if (ins[0] == 's' && ins[1] == 'b' && ins[2] == '\0')
+		ft_sb(all);
+	else if (ins[0] == 's' && ins[1] == 's' && ins[2] == '\0')
+		ft_ss(all);
+	else if (ins[0] == 'p' && ins[1] == 'a' && ins[2] == '\0')
+		ft_pa(all);
+	else if (ins[0] == 'p' && ins[1] == 'b' && ins[2] == '\0')
+		ft_pb(all);
+	else if (ins[0] == 'r' && ins[1] == 'a' && ins[2] == '\0')
+		ft_ra(all);
+	else if (ins[0] == 'r' && ins[1] == 'b' && ins[2] == '\0')
+		ft_rb(all);
+	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == '\0')
+		ft_rr(all);
+	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'a' && ins[3] == '\0')
+		ft_rra(all);
+	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'b' && ins[3] == '\0')
+		ft_rrb(all);
+	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'r' && ins[3] == '\0')
+		ft_rrr(all);
+	else
+		ft_error(5);
+}
+
+void	is_stack_sorted(t_all *all)
+{
+	t_stack	*tmp;
+
+	tmp = all->a;
+	while (tmp->previous)
+	{
+		if (tmp->value < tmp->previous->value)
+			tmp = tmp->previous;
+		else
+		{
+			write(1, "KO\n", 3);
+			exit(0);
+		}
+	}
+	write(1, "OK\n", 3);
+	exit(0);
+}
