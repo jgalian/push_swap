@@ -17,8 +17,8 @@ void	ft_set_initial_stack(t_stack **head, char **argv)
 {
 	int	i;
 	int	num;
-	int	positives[500];
-	int	negatives[500];
+	int	positives[9999];
+	int	negatives[9999];
 	char **args;
 
 	i = -1;

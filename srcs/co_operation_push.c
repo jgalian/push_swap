@@ -14,6 +14,7 @@ void	ft_pa(t_all *all)
 		ft_del_top(&all->b);
 		ft_push_top(&all->a, n);
 	}
+	write(1, "pa\n", 3);
 }
 
 /*
@@ -30,4 +31,5 @@ void	ft_pb(t_all *all)
 		ft_del_top(&all->a);
 		ft_push_top(&all->b, n);
 	}
+	write(1, "pb\n", 3);
 }

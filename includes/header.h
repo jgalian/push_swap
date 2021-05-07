@@ -24,14 +24,14 @@ typedef struct 		s_all
 }					t_all;
 
 /* push_swap.c */
-// void	ft_set_initial_stack(t_stack **head, char **argv);
-// int		process_arguments(char **argv, int i);
-// void	ft_error(int i);
+void	ft_send_all_to_b(t_all *all);
+void	ft_send_all_to_a(t_all *all);
+int		ft_is_stack_sorted_ps(t_all *all);
 
 /* checker.c */
 char	**read_stdin(void);
 void	execute_instructions(char *inst, t_all *all);
-void	is_stack_sorted(t_all *all);
+
 
 /* list_management.c */
 void	ft_push_top(t_stack **head, int value);
@@ -39,6 +39,12 @@ void	ft_del_top(t_stack **head);
 void	ft_print_list(t_stack *head);
 int		ft_peek(t_stack *head);
 int		ft_list_lenght(t_stack *head);
+int		ft_list_smallest_value(t_stack *head);
+int		ft_list_greatest_value(t_stack *head);
+void	ft_swap_if_bigger(t_all *all, t_stack *head);
+void	ft_swap_if_smaller(t_all *all, t_stack *head);
+int		ft_list_values_average(t_stack *head);
+int		ft_list_values_sum(t_stack *head);
 
 /* operation_push.c */
 void	ft_pa(t_all *all);
@@ -68,6 +74,7 @@ int		process_arguments(char **argv, int i);
 /* utils.c */
 void	ft_print_all_lists(t_all *all);
 void	ft_error(int i);
+void	ft_is_stack_sorted(t_all *all);
 
 /* get_next_line.c */
 int		get_next_line(int fd, char **line);

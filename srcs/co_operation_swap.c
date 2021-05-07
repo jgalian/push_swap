@@ -15,6 +15,7 @@ void	ft_sa(t_all *all)
 	ft_del_top(&all->a);
 	ft_push_top(&all->a, top);
 	ft_push_top(&all->a, second);
+	write(1, "sa\n", 3);
 }
 
 /*
@@ -32,6 +33,7 @@ void	ft_sb(t_all *all)
 	ft_del_top(&all->b);
 	ft_push_top(&all->b, top);
 	ft_push_top(&all->b, second);
+	write(1, "sb\n", 3);
 }
 
 /*
@@ -42,4 +44,5 @@ void	ft_ss(t_all *all)
 {
 	ft_sa(all);
 	ft_sb(all);
+	write(1, "ss\n", 3);
 }

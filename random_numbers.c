@@ -22,16 +22,38 @@ int	main(int argc, char **argv)
 	int		n;
 	int 	i;
 	int		range;
+	int		positives[9999];
+	int		negatives[9999];
 
 	if (check_for_argument_errors(argc, argv))
 		return (1);
+	i = -1;
+	while (++i <= 500)
+	{
+		positives[i] = 0;
+		negatives[i] = 0;
+	}
 	srand((unsigned) time(&t));
 	range = atoi(argv[2]);
 	n = atoi(argv[1]);
-	while (n-- > 0)
+	while (n > 0)
 	{
 		i = rand() % (range * 2);
-		printf("%i ", i - range);
+		if (i >= 0 && !positives[i])
+		{
+			positives[i] = 1;
+			printf("%i ", i - range);
+			n--;
+		}
+		else if (i < 0 && !negatives[i * -1])
+		{
+			negatives[i * -1] = 1;
+			printf("%i ", i - range);
+			n--;
+		}
+		else
+			continue ;
+		//printf("%i ", i - range);
 	}
 	printf("\n");
 	return (0);

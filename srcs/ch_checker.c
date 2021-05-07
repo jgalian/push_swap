@@ -28,11 +28,12 @@ int		main(int argc, char **argv)
 	i = -1;
 	while (instructions[++i])
 	{
-		printf("\n%s\n", instructions[i]);							//
+		//printf("\n%s\n", instructions[i]);							//
 		execute_instructions(instructions[i], all);
-		ft_print_all_lists(all);									//
+		//ft_print_all_lists(all);									//
 	}
-	is_stack_sorted(all);
+	ft_print_all_lists(all);
+	ft_is_stack_sorted(all);
 	return (0);
 }
 
@@ -91,7 +92,7 @@ void	execute_instructions(char *ins, t_all *all)
 		ft_error(5);
 }
 
-void	is_stack_sorted(t_all *all)
+void	ft_is_stack_sorted(t_all *all)
 {
 	t_stack	*tmp;
 
