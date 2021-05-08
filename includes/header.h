@@ -43,6 +43,10 @@ int		ft_list_smallest_value(t_stack *head);
 int		ft_list_greatest_value(t_stack *head);
 void	ft_swap_if_bigger(t_all *all, t_stack *head);
 void	ft_swap_if_smaller(t_all *all, t_stack *head);
+void	ft_swap_a_if_bigger(t_all *all);
+void	ft_swap_b_if_bigger(t_all *all);
+void	ft_swap_a_if_smaller(t_all *all);
+void	ft_swap_b_if_smaller(t_all *all);
 int		ft_list_values_average(t_stack *head);
 int		ft_list_values_sum(t_stack *head);
 

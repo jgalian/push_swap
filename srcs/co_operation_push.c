@@ -10,7 +10,7 @@ void	ft_pa(t_all *all)
 
 	if (all->b)
 	{
-		n = ft_peek(all->b);
+		n = all->b->value;
 		ft_del_top(&all->b);
 		ft_push_top(&all->a, n);
 	}
@@ -27,7 +27,7 @@ void	ft_pb(t_all *all)
 
 	if (all->a)
 	{
-		n = ft_peek(all->a);
+		n = all->a->value;
 		ft_del_top(&all->a);
 		ft_push_top(&all->b, n);
 	}

@@ -22,3 +22,17 @@ void	ft_print_all_lists(t_all *all)
 	write(1, "\n", 1);
 }
 
+int		ft_is_stack_sorted_ps(t_all *all)
+{
+	t_stack	*tmp;
+
+	tmp = all->a;
+	while (tmp->previous)
+	{
+		if (tmp->value < tmp->previous->value)
+			tmp = tmp->previous;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
+}

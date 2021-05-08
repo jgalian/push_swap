@@ -1,5 +1,7 @@
 #include "header.h"
 
+// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./push_swap
+
 /*
 ** Push_swap program should receive as argument a list of integers. It has to
 ** fill the stack A with theese numbers. And then, using a limited type of
@@ -7,6 +9,8 @@
 ** with the smallest number at the top of stack A. It should use the smallest
 ** list of instructions possible.
 */
+void	ft_send_all_to_b_2(t_all *all);
+void	ft_send_all_to_a_2(t_all *all);
 
 void prueba(t_all *all);
 
@@ -23,14 +27,16 @@ int		main(int argc, char **argv)
 	all->b = NULL;
 	ft_set_initial_stack(&all->a, argv);
 	// to do
-	//ft_print_all_lists(all);
-	while (!ft_is_stack_sorted_ps(all))
-	{
+	ft_print_all_lists(all);
+	//while (!ft_is_stack_sorted_ps(all))
+	//{
 		ft_send_all_to_b(all);
 		ft_send_all_to_a(all);
-	}
+		//ft_send_all_to_b_2(all);
+		//ft_send_all_to_a_2(all);
+	//}
 
-	//ft_print_all_lists(all);
+	ft_print_all_lists(all);
 
 }
 
@@ -47,11 +53,20 @@ void	ft_send_all_to_b(t_all *all)
 		i = 0;
 		while (i < n_elements)
 		{
-			if (all->a->value < average || !all->a->previous)
+			//printf("average: %i\n", average);
+			ft_swap_a_if_bigger(all);
+			// if (all->a && all->a->previous && all->a->value > all->a->previous->value)
+			// 	ft_sa(all);
+			if (all->a->value <= average || !all->a->previous)
 			{
 				ft_pb(all);
 				if (all->b && all->b->previous && all->b->value < all->b->previous->value)
-					ft_sb(all);
+				{
+					if (all->a && all->a->previous && all->a->value > all->a->previous->value)
+						ft_ss(all);
+					else
+				 		ft_sb(all);
+				}
 			}
 			else
 				ft_ra(all);
@@ -65,9 +80,9 @@ void	ft_send_all_to_b(t_all *all)
 
 void	ft_send_all_to_a(t_all *all)
 {
-	int i;
-	int	average;
-	int	n_elements;
+	int 	i;
+	float	average;
+	int		n_elements;
 
 	n_elements = ft_list_lenght(all->b);
 	while (n_elements)
@@ -76,11 +91,20 @@ void	ft_send_all_to_a(t_all *all)
 		i = 0;
 		while (i < n_elements)
 		{
-			if (all->b->value > average || !all->b->previous)
+			//printf("average: %i\n", average);
+			ft_swap_b_if_smaller(all);
+			// if (all->b && all->b->previous && all->b->value < all->b->previous->value)
+			// 	ft_sb(all);
+			if (all->b->value >= average || !all->b->previous)
 			{
 				ft_pa(all);
 				if (all->a && all->a->previous && all->a->value > all->a->previous->value)
-					ft_sa(all);
+				{
+					if (all->b && all->b->previous && all->b->value < all->b->previous->value)
+						ft_ss(all);
+					else
+						ft_sa(all);
+				}
 			}
 			else
 				ft_rb(all);
@@ -91,67 +115,3 @@ void	ft_send_all_to_a(t_all *all)
 		n_elements = ft_list_lenght(all->b);
 	}
 }
-
-int		ft_is_stack_sorted_ps(t_all *all)
-{
-	t_stack	*tmp;
-
-	tmp = all->a;
-	while (tmp->previous)
-	{
-		if (tmp->value < tmp->previous->value)
-			tmp = tmp->previous;
-		else
-			return (FALSE);
-	}
-	return (TRUE);
-}
-
-
-
-
-// ft_list_values_average(all->a);
-// 	ft_print_all_lists(all);
-// 	ft_pb(all);
-// 	ft_print_all_lists(all);
-// 	ft_pb(all);
-// 	ft_print_all_lists(all);
-// 	ft_swap_if_bigger(all, all->b);
-// 	ft_print_all_lists(all);
-
-
-
-// ft_push_top(&all->b, 5);
-	// ft_push_top(&all->b, 7);
-	// ft_push_top(&all->b, 9);
-	// //print_list(all->b);
-	// ft_del_top(&all->b);
-	// //print_list(all->b);
-	// //printf("Top element: %d\n", n = ft_peek(all->b));
-	// ft_sb(all);
-	// ft_print_list(all->b);
-	// // //t_stack	*head;
-	// // int		n;
-
-	// ft_push_top(&all->a, 4);
-	// ft_push_top(&all->a, 6);
-	// ft_push_top(&all->a, 8);
-	// // print_list(all->a);
-	// ft_del_top(&all->a);
-	// // //ft_del_top(&head);
-	// // //ft_del_top(&head);
-	// // print_list(all->a);
-	// ft_sa(all);
-	// ft_print_list(all->a);
-	// // //printf("Top element: %d\n", n = ft_peek(all.a));
-	// //ft_ss(all);
-	// ft_pa(all);
-	// ft_del_top(&all->b);
-	// ft_print_list(all->b);
-	// ft_print_list(all->a);
-	// ft_r(&all->a);
-	// printf("Number of elements: %i\n", ft_list_lenght(all->a));
-	// printf("Number of elements: %i\n", ft_list_lenght(all->b));
-	// ft_print_list(all->a);
-	// ft_rr(&all->a);
-	// ft_print_list(all->a);

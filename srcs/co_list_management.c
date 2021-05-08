@@ -67,15 +67,6 @@ void	ft_print_list(t_stack *head)
 }
 
 /*
-** This function returns the value of the top element in the list
-*/
-
-int		ft_peek(t_stack *head)
-{
-	return (head->value);
-}
-
-/*
 ** This function returns the numbers of elements in the list
 */
 
@@ -101,8 +92,6 @@ int		ft_list_smallest_value(t_stack *head)
 	t_stack	*tmp;
 	int		ret;
 
-	// if (head == NULL)
-	// 	return (NULL);
 	tmp = head;
 	ret = tmp->value;
 	while (tmp->previous != NULL)
@@ -120,8 +109,6 @@ int		ft_list_greatest_value(t_stack *head)
 	t_stack	*tmp;
 	int		ret;
 
-	// if (head == NULL)
-	// 	return (NULL);
 	tmp = head;
 	ret = tmp->value;
 	while (tmp->previous != NULL)
@@ -134,26 +121,28 @@ int		ft_list_greatest_value(t_stack *head)
 	return (ret);
 }
 
-void	ft_swap_if_bigger(t_all *all, t_stack *head)
+void	ft_swap_a_if_bigger(t_all *all)
 {
-	if (head->value > head->previous->value)
-	{
-		if (head == all->a)
-			ft_sa(all);
-		else if (head == all->b)
-			ft_sb(all);
-	}
+	if (all->a && all->a->previous && all->a->value > all->a->previous->value)
+		ft_sa(all);
 }
 
-void	ft_swap_if_smaller(t_all *all, t_stack *head)
+void	ft_swap_b_if_bigger(t_all *all)
 {
-	if (head->value < head->previous->value)
-	{
-		if (head == all->a)
-			ft_sa(all);
-		else if (head == all->b)
-			ft_sb(all);
-	}
+	if (all->b && all->b->previous && all->b->value > all->b->previous->value)
+		ft_sb(all);
+}
+
+void	ft_swap_a_if_smaller(t_all *all)
+{
+	if (all->a && all->a->previous && all->a->value < all->a->previous->value)
+		ft_sa(all);
+}
+
+void	ft_swap_b_if_smaller(t_all *all)
+{
+	if (all->b && all->b->previous && all->b->value < all->b->previous->value)
+		ft_sb(all);
 }
 
 int		ft_list_values_average(t_stack *head)

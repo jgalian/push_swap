@@ -4,45 +4,34 @@
 ** This function swaps first and second element in the list A
 */
 
-void	ft_sa(t_all *all)
+void	ft_swap(t_stack *head)
 {
-	int	top;
-	int	second;
+	int	tmp;
 
-	top = ft_peek(all->a);
-	ft_del_top(&all->a);
-	second = ft_peek(all->a);
-	ft_del_top(&all->a);
-	ft_push_top(&all->a, top);
-	ft_push_top(&all->a, second);
-	write(1, "sa\n", 3);
-}
-
-/*
-** This function swaps first and second element in the list B
-*/
-
-void	ft_sb(t_all *all)
-{
-	int	top;
-	int	second;
-
-	top = ft_peek(all->b);
-	ft_del_top(&all->b);
-	second = ft_peek(all->b);
-	ft_del_top(&all->b);
-	ft_push_top(&all->b, top);
-	ft_push_top(&all->b, second);
-	write(1, "sb\n", 3);
+	tmp = head->value;
+	head->value = head->previous->value;
+	head->previous->value = tmp;
 }
 
 /*
 ** This function swaps first and second element in lists A and B
 */
 
+void	ft_sa(t_all *all)
+{
+	ft_swap(all->a);
+	write(1, "sa\n", 3);
+}
+
+void	ft_sb(t_all *all)
+{
+	ft_swap(all->b);
+	write(1, "sb\n", 3);
+}
+
 void	ft_ss(t_all *all)
 {
-	ft_sa(all);
-	ft_sb(all);
+	ft_swap(all->a);
+	ft_swap(all->b);
 	write(1, "ss\n", 3);
 }
