@@ -9,15 +9,15 @@ void	ft_rotate(t_stack **head)
 {
 	t_stack	*tmp;
 
-	if (!head || !(*head)->previous)
+	if (!head || !(*head)->prev)
 		return ;
 	tmp = *head;
-	while (tmp->previous != NULL)
-		tmp = tmp->previous;
-	tmp->previous = *head;
-	tmp = tmp->previous;
-	*head = tmp->previous;
-	tmp->previous = NULL;
+	while (tmp->prev != NULL)
+		tmp = tmp->prev;
+	tmp->prev = *head;
+	tmp = tmp->prev;
+	*head = tmp->prev;
+	tmp->prev = NULL;
 }
 
 void	ft_ra(t_all *all)

@@ -34,6 +34,7 @@ int		main(int argc, char **argv)
 	}
 	ft_print_all_lists(all);
 	ft_is_stack_sorted(all);
+	ft_clean_up(all);
 	return (0);
 }
 
@@ -97,10 +98,10 @@ void	ft_is_stack_sorted(t_all *all)
 	t_stack	*tmp;
 
 	tmp = all->a;
-	while (tmp->previous)
+	while (tmp->prev)
 	{
-		if (tmp->value < tmp->previous->value)
-			tmp = tmp->previous;
+		if (tmp->value < tmp->prev->value)
+			tmp = tmp->prev;
 		else
 		{
 			write(1, "KO\n", 3);

@@ -12,7 +12,7 @@ CHECKER_OBJ = $(addprefix $(OBJ_DIR),$(CHECKER_OBJS))
 
 PUSH_SWAP_SRCS =	ps_push_swap.c co_list_management.c co_operation_reverse_rotate.c \
 					co_operation_push.c co_operation_rotate.c co_operation_swap.c \
-					co_set_initial_stack.c co_utils.c
+					co_set_initial_stack.c co_utils.c ps_quick_sort.c ps_insertion_sort.c
 PUSH_SWAP_OBJS =	$(PUSH_SWAP_SRCS:.c=.o)
 PUSH_SWAP_OBJ = $(addprefix $(OBJ_DIR),$(PUSH_SWAP_OBJS))
 

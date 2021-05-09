@@ -22,7 +22,7 @@ void	ft_set_initial_stack(t_stack **head, char **argv)
 	char **args;
 
 	i = -1;
-	while (++i <= 500)
+	while (++i <= 9999)
 	{
 		positives[i] = 0;
 		negatives[i] = 0;

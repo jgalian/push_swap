@@ -15,9 +15,9 @@ void	ft_push_top(t_stack **head, int value)
 	}
 	node->value = value;
 	if (*head == NULL)
-		node->previous = NULL;
+		node->prev = NULL;
 	else
-		node->previous = *head;
+		node->prev = *head;
 	*head = node;
 }
 
@@ -32,14 +32,14 @@ void	ft_del_top(t_stack **head)
 	tmp = *head;
 	if (tmp == NULL)
 		write(1, "Nothing to delete\n", 19);
-	else if (tmp->previous == NULL)
+	else if (tmp->prev == NULL)
 	{
 		*head = NULL;
 		free(tmp);
 	}
 	else
 	{
-		*head = tmp->previous;
+		*head = tmp->prev;
 		free(tmp);
 	}
 }
@@ -60,7 +60,7 @@ void	ft_print_list(t_stack *head)
 		while (current != NULL)
 		{
 			printf("%i / ", current->value);						//
-			current = current->previous;
+			current = current->prev;
 		}
 		printf("\n");												//
 	}
@@ -79,9 +79,9 @@ int		ft_list_lenght(t_stack *head)
 		return (0);
 	tmp = head;
 	i = 1;
-	while (tmp->previous != NULL)
+	while (tmp->prev != NULL)//quizas es mejor tmp != NULL
 	{
-		tmp = tmp->previous;
+		tmp = tmp->prev;
 		i++;
 	}
 	return (i);
@@ -94,14 +94,39 @@ int		ft_list_smallest_value(t_stack *head)
 
 	tmp = head;
 	ret = tmp->value;
-	while (tmp->previous != NULL)
+	while (tmp->prev != NULL)//quizas es mejor tmp != NULL
 	{
-		tmp = tmp->previous;
+		tmp = tmp->prev;
 		if (tmp->value < ret)
 			ret = tmp->value;
 	}
 	//printf("smallest: %i\n", ret);
 	return (ret);
+}
+
+int		ft_list_smallest_value_position(t_stack *head)
+{
+	t_stack	*tmp;
+	int		smallest;
+	int		position;
+	int		i;
+
+	tmp = head;
+	smallest = tmp->value;
+	position = 0;
+	i = 0;
+	while (tmp->prev != NULL)//quizas es mejor tmp != NULL
+	{
+		i++;
+		tmp = tmp->prev;
+		if (tmp->value < smallest)
+		{
+			smallest = tmp->value;
+			position = i;
+		}
+	}
+	//printf("smallest_value_position: %i\n", ret);
+	return (position);
 }
 
 int		ft_list_greatest_value(t_stack *head)
@@ -111,9 +136,9 @@ int		ft_list_greatest_value(t_stack *head)
 
 	tmp = head;
 	ret = tmp->value;
-	while (tmp->previous != NULL)
+	while (tmp->prev != NULL)//quizas es mejor tmp != NULL
 	{
-		tmp = tmp->previous;
+		tmp = tmp->prev;
 		if (tmp->value > ret)
 			ret = tmp->value;
 	}
@@ -121,27 +146,52 @@ int		ft_list_greatest_value(t_stack *head)
 	return (ret);
 }
 
+int		ft_list_greatest_value_position(t_stack *head)
+{
+	t_stack	*tmp;
+	int		greatest;
+	int		position;
+	int		i;
+
+	tmp = head;
+	greatest = tmp->value;
+	position = 0;
+	i = 0;
+	while (tmp->prev != NULL)//quizas es mejor tmp != NULL
+	{
+		i++;
+		tmp = tmp->prev;
+		if (tmp->value > greatest)
+		{
+			greatest = tmp->value;
+			position = i;
+		}
+	}
+	//printf("smallest_value_position: %i\n", ret);
+	return (position);
+}
+
 void	ft_swap_a_if_bigger(t_all *all)
 {
-	if (all->a && all->a->previous && all->a->value > all->a->previous->value)
+	if (all->a && all->a->prev && all->a->value > all->a->prev->value)
 		ft_sa(all);
 }
 
 void	ft_swap_b_if_bigger(t_all *all)
 {
-	if (all->b && all->b->previous && all->b->value > all->b->previous->value)
+	if (all->b && all->b->prev && all->b->value > all->b->prev->value)
 		ft_sb(all);
 }
 
 void	ft_swap_a_if_smaller(t_all *all)
 {
-	if (all->a && all->a->previous && all->a->value < all->a->previous->value)
+	if (all->a && all->a->prev && all->a->value < all->a->prev->value)
 		ft_sa(all);
 }
 
 void	ft_swap_b_if_smaller(t_all *all)
 {
-	if (all->b && all->b->previous && all->b->value < all->b->previous->value)
+	if (all->b && all->b->prev && all->b->value < all->b->prev->value)
 		ft_sb(all);
 }
 
@@ -160,11 +210,13 @@ int		ft_list_values_sum(t_stack *head)
 	t_stack	*tmp;
 	int		ret;
 
+	if (!head)
+		return (0);
 	tmp = head;
 	ret = tmp->value;
-	while (tmp->previous != NULL)
+	while (tmp->prev != NULL)
 	{
-		tmp = tmp->previous;
+		tmp = tmp->prev;
 		ret += tmp->value;
 	}
 	//printf("sum: %i\n", ret);

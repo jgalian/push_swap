@@ -27,12 +27,21 @@ int		ft_is_stack_sorted_ps(t_all *all)
 	t_stack	*tmp;
 
 	tmp = all->a;
-	while (tmp->previous)
+	while (tmp->prev)
 	{
-		if (tmp->value < tmp->previous->value)
-			tmp = tmp->previous;
+		if (tmp->value < tmp->prev->value)
+			tmp = tmp->prev;
 		else
 			return (FALSE);
 	}
 	return (TRUE);
+}
+
+void	ft_clean_up(t_all *all)
+{
+	while (all->a)
+		ft_del_top(&all->a);
+	while (all->b)
+		ft_del_top(&all->b);
+	free(all);
 }

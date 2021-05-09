@@ -14,7 +14,7 @@
 typedef struct		s_stack
 {
 	int				value;
-	struct s_stack	*previous;
+	struct s_stack	*prev;
 }					t_stack;
 
 typedef struct 		s_all
@@ -27,6 +27,14 @@ typedef struct 		s_all
 void	ft_send_all_to_b(t_all *all);
 void	ft_send_all_to_a(t_all *all);
 int		ft_is_stack_sorted_ps(t_all *all);
+
+/* ps_quick_sort.c */
+void	ft_quick_sort_a(t_all *all);
+void	ft_quick_sort_b(t_all *all);
+int		ft_someone_smaller(t_stack *head, int num);
+
+/* insertion_sort */
+void	ft_insertion_sort(t_all *all);
 
 /* checker.c */
 char	**read_stdin(void);
@@ -49,6 +57,8 @@ void	ft_swap_a_if_smaller(t_all *all);
 void	ft_swap_b_if_smaller(t_all *all);
 int		ft_list_values_average(t_stack *head);
 int		ft_list_values_sum(t_stack *head);
+int		ft_list_greatest_value_position(t_stack *head);
+int		ft_list_smallest_value_position(t_stack *head);
 
 /* operation_push.c */
 void	ft_pa(t_all *all);
@@ -79,6 +89,7 @@ int		process_arguments(char **argv, int i);
 void	ft_print_all_lists(t_all *all);
 void	ft_error(int i);
 void	ft_is_stack_sorted(t_all *all);
+void	ft_clean_up(t_all *all);
 
 /* get_next_line.c */
 int		get_next_line(int fd, char **line);

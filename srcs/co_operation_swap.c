@@ -9,8 +9,8 @@ void	ft_swap(t_stack *head)
 	int	tmp;
 
 	tmp = head->value;
-	head->value = head->previous->value;
-	head->previous->value = tmp;
+	head->value = head->prev->value;
+	head->prev->value = tmp;
 }
 
 /*
