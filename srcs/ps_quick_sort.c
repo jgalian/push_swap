@@ -68,28 +68,28 @@ void	ft_send_all_to_a(t_all *all)
 	}
 }
 
-int		ft_someone_smaller(t_stack *head, int num)
+int		ft_found_equal_or_smaller(t_stack *head, int num)
 {
 	t_stack	*tmp;
 
 	tmp = head;
 	while (tmp)
 	{
-		if (tmp->value < num)
+		if (tmp->value <= num)
 			return (TRUE);
 		tmp = tmp->prev;
 	}
 	return (FALSE);
 }
 
-int		ft_someone_bigger(t_stack *head, int num)
+int		ft_found_equal_or_bigger(t_stack *head, int num)
 {
 	t_stack	*tmp;
 
 	tmp = head;
 	while (tmp)
 	{
-		if (tmp->value > num)
+		if (tmp->value >= num)
 			return (TRUE);
 		tmp = tmp->prev;
 	}
@@ -101,9 +101,9 @@ void	ft_quick_sort_a(t_all *all)
 	int	average;
 
 	average = ft_list_values_average(all->a);
-	while (ft_someone_smaller(all->a, average))
+	while (ft_found_equal_or_smaller(all->a, average))
 	{
-		if (all->a->value <= average || !all->a->prev)
+		if (all->a->value <= average)// || !all->a->prev)
 		{
 			ft_pb(all);
 			if (all->b->prev && all->b->value == ft_list_smallest_value(all->b))
@@ -113,7 +113,7 @@ void	ft_quick_sort_a(t_all *all)
 				else
 					ft_rb(all);
 			}
-			else if (all->b && all->b->prev && all->b->value < all->b->prev->value)// parece que da igual if que if else // igual se puede quitar all->b
+			if (all->b && all->b->prev && all->b->value < all->b->prev->value)// parece que da igual if que if else // igual se puede quitar all->b
 			{
 				if (all->a && all->a->prev && all->a->value > all->a->prev->value)//quiza se puede quitar all->a
 					ft_ss(all);
@@ -131,19 +131,19 @@ void	ft_quick_sort_b(t_all *all)
 	int	average;
 
 	average = ft_list_values_average(all->b);
-	while (ft_someone_bigger(all->b, average))
+	while (ft_found_equal_or_bigger(all->b, average))
 	{
 		if (all->b->value >= average || !all->b->prev)
 		{
 			ft_pa(all);
 			if (all->a->prev && all->a->value == ft_list_greatest_value(all->a))
 			{
-				if (all->b->value < average)
+			 	if (all->b->value < average)
 					ft_rr(all);
 				else
-					ft_ra(all);
+			 		ft_ra(all);
 			}
-			else if (all->a && all->a->prev && all->a->value < all->a->prev->value)// parece que da igual if que if else // igual se puede quitar all->a
+			if (all->a && all->a->prev && all->a->value > all->a->prev->value)// parece que da igual if que if else // igual se puede quitar all->a
 			{
 				if (all->b && all->b->prev && all->b->value < all->b->prev->value)//igual se puede quitar all->b
 					ft_ss(all);
@@ -153,5 +153,6 @@ void	ft_quick_sort_b(t_all *all)
 		}
 		else
 			ft_rb(all);
+		//ft_print_all_lists(all);
 	}
 }

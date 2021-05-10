@@ -34,4 +34,5 @@ void	ft_insertion_sort(t_all *all)
 			ft_rra(all);
 	}
 	ft_pb(all);
+	//return (ft_is_stack_sorted_ps(all));
 }

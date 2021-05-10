@@ -22,11 +22,26 @@ void	ft_print_all_lists(t_all *all)
 	write(1, "\n", 1);
 }
 
-int		ft_is_stack_sorted_ps(t_all *all)
+// int		ft_is_stack_sorted_ps(t_all *all)
+// {
+// 	t_stack	*tmp;
+
+// 	tmp = all->a;
+// 	while (tmp->prev)
+// 	{
+// 		if (tmp->value < tmp->prev->value)
+// 			tmp = tmp->prev;
+// 		else
+// 			return (FALSE);
+// 	}
+// 	return (TRUE);
+// }
+
+int		ft_is_stack_sorted_ps(t_stack *head)
 {
 	t_stack	*tmp;
 
-	tmp = all->a;
+	tmp = head;
 	while (tmp->prev)
 	{
 		if (tmp->value < tmp->prev->value)

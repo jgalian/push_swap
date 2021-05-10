@@ -26,12 +26,14 @@ typedef struct 		s_all
 /* push_swap.c */
 void	ft_send_all_to_b(t_all *all);
 void	ft_send_all_to_a(t_all *all);
-int		ft_is_stack_sorted_ps(t_all *all);
+//int		ft_is_stack_sorted_ps(t_all *all);
+int		ft_is_stack_sorted_ps(t_stack *head);
 
 /* ps_quick_sort.c */
 void	ft_quick_sort_a(t_all *all);
 void	ft_quick_sort_b(t_all *all);
-int		ft_someone_smaller(t_stack *head, int num);
+int		ft_found_equal_or_smaller(t_stack *head, int num);
+int		ft_found_equal_or_bigger(t_stack *head, int num);
 
 /* insertion_sort */
 void	ft_insertion_sort(t_all *all);

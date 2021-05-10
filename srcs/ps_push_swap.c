@@ -30,13 +30,12 @@ int		main(int argc, char **argv)
 		// ft_send_all_to_a(all);
 	//}
 
-	while (all->a->prev)
+	while (all->a->prev && !ft_is_stack_sorted_ps(all->a)) //all))
 		ft_quick_sort_a(all);
-	while (all->b->prev)
+	while (all->b && !ft_is_stack_sorted_ps(all->b)) //all))
 		ft_quick_sort_b(all);
-	ft_pa(all);
 
-	while (all->a)
+	while (all->a && !ft_is_stack_sorted_ps(all->a)) //all))
 	{
 		ft_insertion_sort(all);
 	}
