@@ -4,7 +4,7 @@
 ** This function returns the numbers of elements in the list
 */
 
-int		ft_list_lenght(t_stack *head)
+int	ft_list_lenght(t_stack *head)
 {
 	t_stack	*tmp;
 	int		i;
@@ -29,7 +29,8 @@ void	ft_push_top(t_stack **head, int value)
 {
 	t_stack	*node;
 
-	if (!(node = (t_stack *)malloc(sizeof(t_stack))))
+	node = (t_stack *)malloc(sizeof(t_stack));
+	if (!node)
 	{
 		write(1, "Not able to push an element\n", 29);
 		return ;
@@ -65,7 +66,7 @@ void	ft_del_top(t_stack **head)
 	}
 }
 
-int		ft_is_stack_sorted(t_stack *head)
+int	ft_is_stack_sorted(t_stack *head)
 {
 	t_stack	*tmp;
 

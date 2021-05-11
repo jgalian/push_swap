@@ -48,12 +48,15 @@ void	ft_insertion_sort_500_a(t_all *all)
 	else
 		rotations_biggest = n_elements - pos_biggest;
 	if (rotations_biggest < rotations_smallest)
-		ft_exec_insert_sort_500_a_biggest(all, pos_biggest, rotations_biggest, n_elements);
+		ft_exec_insert_sort_500_a_biggest(all, pos_biggest, rotations_biggest,
+			n_elements);
 	else
-		ft_exec_insert_sort_500_a_smallest(all, pos_smallest, rotations_smallest, n_elements);
+		ft_exec_insert_sort_500_a_smallest(all, pos_smallest,
+			rotations_smallest, n_elements);
 }
 
-void	ft_exec_insert_sort_500_a_biggest(t_all *all, int pos_biggest, int rotations_biggest, int n_elements)
+void	ft_exec_insert_sort_500_a_biggest(t_all *all, int pos_biggest,
+	int rotations_biggest, int n_elements)
 {
 	if (pos_biggest <= n_elements / 2)
 		while (rotations_biggest--)

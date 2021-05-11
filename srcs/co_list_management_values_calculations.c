@@ -1,16 +1,14 @@
 #include "header.h"
 
-int		ft_list_values_average(t_stack *head)
+int	ft_list_values_average(t_stack *head)
 {
 	int	ret;
 
 	ret = ft_list_values_sum(head) / ft_list_lenght(head);
-	//printf("average: %i\n", ret);
 	return (ret);
-
 }
 
-int		ft_list_values_sum(t_stack *head)
+int	ft_list_values_sum(t_stack *head)
 {
 	t_stack	*tmp;
 	int		ret;

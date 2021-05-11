@@ -10,7 +10,7 @@
 ** list of instructions possible.
 */
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_all	*all;
 	int		n_elements;
@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 
 void	ft_ps_5(t_all *all)
 {
-	int i;
+	int	i;
 
 	i = 4;
 	while (--i > 0)

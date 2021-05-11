@@ -8,7 +8,7 @@
 ** list of instructions possible.
 */
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_all	*all;
 	int		i;
@@ -24,24 +24,17 @@ int		main(int argc, char **argv)
 	all->a = NULL;
 	all->b = NULL;
 	ft_set_initial_stack(&all->a, argv);
-		instructions = read_stdin();
-//	printf("\n");													//
-//	ft_print_all_lists(all);										//
+	instructions = read_stdin();
 	i = -1;
 	while (instructions[++i])
-	{
-		//printf("\n%s\n", instructions[i]);							//
 		execute_instructions(instructions[i], all);
-		//ft_print_all_lists(all);									//
-	}
-	//ft_print_all_lists(all);
 	ft_check_if_sorted(all);
 	instructions = ft_free_matrix(instructions);
 	ft_clean_up(all);
 	return (0);
 }
 
-char	**read_stdin(void)
+char**read_stdin(void)
 {
 	int		ret;
 	char	*buf;

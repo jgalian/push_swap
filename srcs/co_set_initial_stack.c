@@ -15,11 +15,11 @@
 
 void	ft_set_initial_stack(t_stack **head, char **argv)
 {
-	int	i;
-	int	num;
-	int	positives[9999];
-	int	negatives[9999];
-	char **args;
+	int		i;
+	int		num;
+	int		positives[9999];
+	int		negatives[9999];
+	char	**args;
 
 	ft_initialize_array(positives, 9999);
 	ft_initialize_array(negatives, 9999);

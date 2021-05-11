@@ -15,10 +15,10 @@ void	ft_print_list(t_stack *head)
 		current = head;
 		while (current != NULL)
 		{
-			printf("%i / ", current->value);						//
+			ft_putnbr_fd(current->value, 1);
 			current = current->prev;
 		}
-		printf("\n");												//
+		write(1, "\n", 1);
 	}
 }
 

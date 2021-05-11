@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int		ft_getchar(void)
+int	ft_getchar(void)
 {
 	char	buf[1];
 	int		c;

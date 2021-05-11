@@ -1,6 +1,6 @@
 #include "header.h"
 
-int		ft_found_equal_or_smaller(t_stack *head, int num)
+int	ft_found_equal_or_smaller(t_stack *head, int num)
 {
 	t_stack	*tmp;
 
@@ -14,7 +14,7 @@ int		ft_found_equal_or_smaller(t_stack *head, int num)
 	return (FALSE);
 }
 
-int		ft_found_equal_or_bigger(t_stack *head, int num)
+int	ft_found_equal_or_bigger(t_stack *head, int num)
 {
 	t_stack	*tmp;
 

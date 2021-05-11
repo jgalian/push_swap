@@ -1,6 +1,6 @@
 #include "header.h"
 
-int		ft_list_smallest_value(t_stack *head)
+int	ft_list_smallest_value(t_stack *head)
 {
 	t_stack	*tmp;
 	int		ret;
@@ -16,7 +16,7 @@ int		ft_list_smallest_value(t_stack *head)
 	return (ret);
 }
 
-int		ft_list_smallest_value_position(t_stack *head)
+int	ft_list_smallest_value_position(t_stack *head)
 {
 	t_stack	*tmp;
 	int		smallest;
@@ -40,7 +40,7 @@ int		ft_list_smallest_value_position(t_stack *head)
 	return (position);
 }
 
-int		ft_list_greatest_value(t_stack *head)
+int	ft_list_greatest_value(t_stack *head)
 {
 	t_stack	*tmp;
 	int		ret;
@@ -56,7 +56,7 @@ int		ft_list_greatest_value(t_stack *head)
 	return (ret);
 }
 
-int		ft_list_greatest_value_position(t_stack *head)
+int	ft_list_greatest_value_position(t_stack *head)
 {
 	t_stack	*tmp;
 	int		greatest;
