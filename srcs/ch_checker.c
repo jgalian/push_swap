@@ -34,8 +34,9 @@ int		main(int argc, char **argv)
 		execute_instructions(instructions[i], all);
 		//ft_print_all_lists(all);									//
 	}
-	ft_print_all_lists(all);
+	//ft_print_all_lists(all);
 	ft_check_if_sorted(all);
+	instructions = ft_free_matrix(instructions);
 	ft_clean_up(all);
 	return (0);
 }
@@ -56,14 +57,15 @@ char	**read_stdin(void)
 		if (ret > 0)
 		{
 			tmp = ft_strjoin(line, buf);
-			free(buf);
-			free(line);
+			buf = ft_free_ptr(buf);
+			line = ft_free_ptr(line);
 			line = ft_strjoin(tmp, "\n");
-			free(tmp);
+			tmp = ft_free_ptr(tmp);
 		}
 	}
 	instructions = ft_split(line, '\n');
-	free(line);
+	buf = ft_free_ptr(buf);
+	line = ft_free_ptr(line);
 	return (instructions);
 }
 
@@ -107,9 +109,8 @@ void	ft_check_if_sorted(t_all *all)
 		else
 		{
 			write(1, "KO\n", 3);
-			exit(0);
+			return ;
 		}
 	}
 	write(1, "OK\n", 3);
-	exit(0);
 }
