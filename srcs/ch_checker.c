@@ -14,8 +14,10 @@ int		main(int argc, char **argv)
 	int		i;
 	char	**instructions;
 
-	if (argc != 2)
-		return (1);
+	if (argc == 1)
+		return (0);
+	if (argc > 2)
+		ft_error(6);
 	all = (t_all *)malloc(sizeof(t_all));
 	if (!all)
 		ft_error(1);
@@ -23,8 +25,8 @@ int		main(int argc, char **argv)
 	all->b = NULL;
 	ft_set_initial_stack(&all->a, argv);
 		instructions = read_stdin();
-	printf("\n");													//
-	ft_print_all_lists(all);										//
+//	printf("\n");													//
+//	ft_print_all_lists(all);										//
 	i = -1;
 	while (instructions[++i])
 	{
@@ -33,7 +35,7 @@ int		main(int argc, char **argv)
 		//ft_print_all_lists(all);									//
 	}
 	ft_print_all_lists(all);
-	ft_is_stack_sorted(all);
+	ft_check_if_sorted(all);
 	ft_clean_up(all);
 	return (0);
 }
@@ -93,7 +95,7 @@ void	execute_instructions(char *ins, t_all *all)
 		ft_error(5);
 }
 
-void	ft_is_stack_sorted(t_all *all)
+void	ft_check_if_sorted(t_all *all)
 {
 	t_stack	*tmp;
 

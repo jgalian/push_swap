@@ -6,7 +6,7 @@
 /*   By: jgalian- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:29:48 by jgalian-          #+#    #+#             */
-/*   Updated: 2021/05/04 23:34:31 by jgalian-         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:11:02 by jgalian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int				ft_putstrs_fd(char *before, char *str, char *after, int fd);
 int				ft_getchar(void);
 int				ft_matrix_len(char **matrix);
 void			*ft_free_matrix(char **matrix);
+int				get_next_line(int fd, char **line);
 
 #endif

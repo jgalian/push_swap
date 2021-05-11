@@ -13,6 +13,7 @@
 int		main(int argc, char **argv)
 {
 	t_all	*all;
+	int		n_elements;
 
 	if (argc != 2)
 		return (1);
@@ -22,29 +23,70 @@ int		main(int argc, char **argv)
 	all->a = NULL;
 	all->b = NULL;
 	ft_set_initial_stack(&all->a, argv);
-
-	//ft_print_all_lists(all);
-	//while (!ft_is_stack_sorted_ps(all))
-	//{
-		// ft_send_all_to_b(all);
-		// ft_send_all_to_a(all);
-	//}
-
-	while (all->a->prev && !ft_is_stack_sorted_ps(all->a)) //all))
-		ft_quick_sort_a(all);
-	while (all->b && !ft_is_stack_sorted_ps(all->b)) //all))
-		ft_quick_sort_b(all);
-
-	while (all->a && !ft_is_stack_sorted_ps(all->a)) //all))
-	{
-		ft_insertion_sort(all);
-	}
-	while (all->b)
-		ft_pa(all);
-
-	//ft_print_all_lists(all);
+	n_elements = ft_list_lenght(all->a);
+	if (n_elements <= 5)
+		ft_ps_5(all);
+	if (n_elements <= 100)
+		ft_ps_100(all);
+	else
+		ft_ps_500(all);
 	ft_clean_up(all);
-
+	return (0);
 }
 
+void	ft_ps_5(t_all *all)
+{
+	int i;
 
+	i = 4;
+	while (--i > 0)
+		ft_insertion_sort_100(all);
+	if (!ft_is_stack_sorted(all->a))
+		ft_sa(all);
+	while (all->b)
+		ft_pa(all);
+}
+
+void	ft_ps_100(t_all *all)
+{
+	int	average;
+
+	while (all->a->prev && !ft_is_stack_sorted(all->a))
+	{
+		average = ft_list_values_average(all->a);
+		ft_quick_sort_stack_a(all, average);
+	}
+	while (all->b && !ft_is_stack_sorted(all->b))
+	{
+		average = ft_list_values_average(all->b);
+		ft_quick_sort_stack_b(all, average);
+	}
+	while (all->a && !ft_is_stack_sorted(all->a))
+		ft_insertion_sort_100(all);
+	while (all->b)
+		ft_pa(all);
+}
+
+void	ft_ps_500(t_all *all)
+{
+	int	average;
+
+	while (all->a->prev && !ft_is_stack_sorted(all->a))
+	{
+		average = ft_list_values_average(all->a);
+		ft_quick_sort_stack_a(all, average);
+	}
+	while (all->b && !ft_is_stack_sorted(all->b))
+	{
+		average = ft_list_values_average(all->b);
+		ft_quick_sort_stack_b(all, average);
+	}
+	while (all->a)
+		ft_insertion_sort_500_a(all);
+	while (all->b->value != ft_list_greatest_value(all->b))
+		ft_rrb(all);
+	while (all->b)
+		ft_pa(all);
+	if (all->a->value > all->a->prev->value)
+		ft_sa(all);
+}

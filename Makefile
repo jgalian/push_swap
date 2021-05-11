@@ -4,15 +4,26 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 INC = -Iincludes/ -I$(LIB_DIR)
 
-CHECKER_SRCS =	ch_checker.c co_list_management.c co_operation_reverse_rotate.c \
+CHECKER_SRCS =	ch_checker.c co_operation_reverse_rotate.c \
 				co_operation_push.c co_operation_rotate.c co_operation_swap.c \
-				co_set_initial_stack.c co_utils.c
+				co_set_initial_stack.c co_utils.c \
+				co_list_management.c co_list_management_swap_values.c \
+				co_list_management_locate_value.c \
+				co_list_management_print.c \
+				co_list_management_locate_value_2.c \
+				co_list_management_values_calculations.c
 CHECKER_OBJS =	$(CHECKER_SRCS:.c=.o)
 CHECKER_OBJ = $(addprefix $(OBJ_DIR),$(CHECKER_OBJS))
 
-PUSH_SWAP_SRCS =	ps_push_swap.c co_list_management.c co_operation_reverse_rotate.c \
-					co_operation_push.c co_operation_rotate.c co_operation_swap.c \
-					co_set_initial_stack.c co_utils.c ps_quick_sort.c ps_insertion_sort.c
+PUSH_SWAP_SRCS =	ps_push_swap.c ps_quick_sort.c ps_insertion_sort.c \
+					co_list_management.c co_list_management_swap_values.c \
+					co_list_management_locate_value.c \
+					co_list_management_print.c \
+					co_list_management_locate_value_2.c \
+					co_list_management_values_calculations.c \
+					co_operation_reverse_rotate.c co_operation_push.c \
+					co_operation_rotate.c co_operation_swap.c \
+					co_set_initial_stack.c co_utils.c
 PUSH_SWAP_OBJS =	$(PUSH_SWAP_SRCS:.c=.o)
 PUSH_SWAP_OBJ = $(addprefix $(OBJ_DIR),$(PUSH_SWAP_OBJS))
 

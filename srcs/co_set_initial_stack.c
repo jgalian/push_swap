@@ -21,12 +21,8 @@ void	ft_set_initial_stack(t_stack **head, char **argv)
 	int	negatives[9999];
 	char **args;
 
-	i = -1;
-	while (++i <= 9999)
-	{
-		positives[i] = 0;
-		negatives[i] = 0;
-	}
+	ft_initialize_array(positives, 9999);
+	ft_initialize_array(negatives, 9999);
 	args = ft_split(argv[1], ' ');
 	i = ft_matrix_len(args);
 	while (--i >= 0)
@@ -41,6 +37,15 @@ void	ft_set_initial_stack(t_stack **head, char **argv)
 		ft_push_top(head, num);
 	}
 	ft_free_matrix(args);
+}
+
+void	ft_initialize_array(int *array, int num)
+{
+	int	i;
+
+	i = -1;
+	while (++i <= num)
+		array[i] = 0;
 }
 
 /*
