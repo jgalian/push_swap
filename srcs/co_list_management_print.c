@@ -16,6 +16,7 @@ void	ft_print_list(t_stack *head)
 		while (current != NULL)
 		{
 			ft_putnbr_fd(current->value, 1);
+			write(1, " / ", 3);
 			current = current->prev;
 		}
 		write(1, "\n", 1);

@@ -36,10 +36,10 @@ void	ft_quick_sort_stack_b(t_all *all, int average)
 			ft_pa(all);
 			if (all->a->prev && all->a->value == ft_list_greatest_value(all->a))
 			{
-			 	if (all->b->value < average)
+				if (all->b->value < average)
 					ft_rr(all);
 				else
-			 		ft_ra(all);
+					ft_ra(all);
 			}
 			if (all->a->prev && all->a->value > all->a->prev->value)
 			{

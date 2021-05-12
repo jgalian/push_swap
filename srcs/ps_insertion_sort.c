@@ -1,10 +1,5 @@
 #include "header.h"
 
-/* buscar el numero mas bajo de la lista, colocarlo en la primera posicion y mandarlo a b
-y asi sucesivamente.
-Para ello se necesita saber cuantos elementos hay en la lista, en que posicion esta
-y cuantas veces hay que ejecutar ra o rr para mandarlo a la primera posicion */
-
 void	ft_insertion_sort_100(t_all *all)
 {
 	int	n_elements;
@@ -68,7 +63,8 @@ void	ft_exec_insert_sort_500_a_biggest(t_all *all, int pos_biggest,
 	ft_rb(all);
 }
 
-void	ft_exec_insert_sort_500_a_smallest(t_all *all, int pos_smallest, int rotations_smallest, int n_elements)
+void	ft_exec_insert_sort_500_a_smallest(t_all *all, int pos_smallest,
+	int rotations_smallest, int n_elements)
 {
 	if (pos_smallest <= n_elements / 2)
 		while (rotations_smallest--)

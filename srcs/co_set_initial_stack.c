@@ -33,7 +33,7 @@ void	ft_set_initial_stack(t_stack **head, char **argv)
 		else if (num < 0 && !negatives[num * -1])
 			negatives[num * -1] = 1;
 		else
-			ft_error(4);
+			ft_error();
 		ft_push_top(head, num);
 	}
 	ft_free_matrix(args);
@@ -69,10 +69,10 @@ int	process_arguments(char **argv, int i)
 		while (argv[i][++j] != '\0')
 		{
 			if (argv[i][j] != '0')
-				ft_error(2);
+				ft_error();
 		}
 	}
 	if (atoi_ret_val < SHRT_MIN || atoi_ret_val > SHRT_MAX)
-		ft_error(3);
+		ft_error();
 	return (atoi_ret_val);
 }

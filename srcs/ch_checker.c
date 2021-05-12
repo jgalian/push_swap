@@ -1,11 +1,11 @@
 #include "header.h"
 
 /*
-** Push_swap program should receive as argument a list of integers. It has to
-** fill the stack A with theese numbers. And then, using a limited type of
-** instructions, with help of stack B (empty at the begining), get them sorted
-** with the smallest number at the top of stack A. It should use the smallest
-** list of instructions possible.
+** Push_swap program should receive as argument a list of integers. First, it
+** has to get stack A filled with those numbers. Then, using a limited type of
+** instructions, and with the help of stack B (empty at the begining), should
+** get them sorted on the stack A, with the smallest number of movements.
+** Smallest numbers should be at the begging.
 */
 
 int	main(int argc, char **argv)
@@ -17,10 +17,10 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	if (argc > 2)
-		ft_error(6);
+		ft_error();
 	all = (t_all *)malloc(sizeof(t_all));
 	if (!all)
-		ft_error(1);
+		ft_error();
 	all->a = NULL;
 	all->b = NULL;
 	ft_set_initial_stack(&all->a, argv);
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-char**read_stdin(void)
+char	**read_stdin(void)
 {
 	int		ret;
 	char	*buf;
@@ -87,7 +87,7 @@ void	execute_instructions(char *ins, t_all *all)
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'r' && ins[3] == '\0')
 		ft_rrr(all);
 	else
-		ft_error(5);
+		ft_error();
 }
 
 void	ft_check_if_sorted(t_all *all)

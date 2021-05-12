@@ -15,7 +15,7 @@ typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*prev;
-} 					t_stack;
+}					t_stack;
 
 typedef struct s_all
 {
@@ -26,6 +26,7 @@ typedef struct s_all
 /*
 ** push_swap.c
 */
+void	ft_ps_3(t_all *all);
 void	ft_ps_5(t_all *all);
 void	ft_ps_100(t_all *all);
 void	ft_ps_500(t_all *all);
@@ -134,7 +135,7 @@ int		process_arguments(char **argv, int i);
 /*
 ** co_utils.c
 */
-void	ft_error(int i);
+void	ft_error(void);
 void	ft_clean_up(t_all *all);
 
 #endif
