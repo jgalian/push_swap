@@ -69,7 +69,7 @@ void	ft_ps_100(t_all *all)
 		average = ft_list_values_average(all->a);
 		ft_quick_sort_stack_a(all, average);
 	}
-	while (all->b)
+	while (all->b && !ft_is_stack_reverse_sorted(all->b))
 	{
 		average = ft_list_values_average(all->b);
 		ft_quick_sort_stack_b(all, average);
@@ -89,15 +89,19 @@ void	ft_ps_500(t_all *all)
 		average = ft_list_values_average(all->a);
 		ft_quick_sort_stack_a(all, average);
 	}
-	while (all->b)
+	while (all->b && !ft_is_stack_reverse_sorted(all->b))
 	{
 		average = ft_list_values_average(all->b);
 		ft_quick_sort_stack_b(all, average);
 	}
-	while (all->a)
+	while (all->a && !ft_is_stack_sorted(all->a))
 		ft_insertion_sort_500_a(all);
-	while (all->b->value != ft_list_greatest_value(all->b))
-		ft_rrb(all);
+	if (ft_list_greatest_value_position(all->b) <= ft_list_lenght(all->b) / 2)
+		while (all->b->value != ft_list_greatest_value(all->b))
+			ft_rb(all);
+	else
+		while (all->b->value != ft_list_greatest_value(all->b))
+			ft_rrb(all);
 	while (all->b)
 		ft_pa(all);
 }

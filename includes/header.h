@@ -61,6 +61,7 @@ int		ft_list_lenght(t_stack *head);
 void	ft_push_top(t_stack **head, int value);
 void	ft_del_top(t_stack **head);
 int		ft_is_stack_sorted(t_stack *head);
+int		ft_is_stack_reverse_sorted(t_stack *head);
 
 /*
 ** co_list_management_values_calculations.c

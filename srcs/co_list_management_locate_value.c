@@ -13,6 +13,8 @@ int	ft_list_smallest_value(t_stack *head)
 		if (tmp->value < ret)
 			ret = tmp->value;
 	}
+	if (tmp->value < ret)
+		ret = tmp->value;
 	return (ret);
 }
 
@@ -37,6 +39,8 @@ int	ft_list_smallest_value_position(t_stack *head)
 			position = i;
 		}
 	}
+	if (tmp->value < smallest)
+		position = i;
 	return (position);
 }
 
@@ -53,6 +57,8 @@ int	ft_list_greatest_value(t_stack *head)
 		if (tmp->value > ret)
 			ret = tmp->value;
 	}
+	if (tmp->value > ret)
+		ret = tmp->value;
 	return (ret);
 }
 
@@ -77,5 +83,7 @@ int	ft_list_greatest_value_position(t_stack *head)
 			position = i;
 		}
 	}
+	if (tmp->value > greatest)
+		position = i;
 	return (position);
 }

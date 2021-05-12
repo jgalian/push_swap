@@ -80,3 +80,18 @@ int	ft_is_stack_sorted(t_stack *head)
 	}
 	return (TRUE);
 }
+
+int	ft_is_stack_reverse_sorted(t_stack *head)
+{
+	t_stack	*tmp;
+
+	tmp = head;
+	while (tmp->prev)
+	{
+		if (tmp->value > tmp->prev->value)
+			tmp = tmp->prev;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
+}
