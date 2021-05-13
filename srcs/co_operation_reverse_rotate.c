@@ -2,7 +2,7 @@
 
 /*
 ** This function sends the last element to the top of the list so the first
-** element will be second one
+** element becomes the second one
 */
 
 void	ft_reverse_rotate(t_stack **head)
@@ -20,6 +20,9 @@ void	ft_reverse_rotate(t_stack **head)
 		tmp = tmp->prev;
 	tmp->prev = NULL;
 }
+/*
+** This function calls the reverse rotation function for stack A
+*/
 
 void	ft_rra(t_all *all)
 {
@@ -27,11 +30,19 @@ void	ft_rra(t_all *all)
 	write(1, "rra\n", 4);
 }
 
+/*
+** This function calls the reverse rotation function for stack B
+*/
+
 void	ft_rrb(t_all *all)
 {
 	ft_reverse_rotate(&all->b);
 	write(1, "rrb\n", 4);
 }
+
+/*
+** This function calls the reverse rotation function for both stack A and B
+*/
 
 void	ft_rrr(t_all *all)
 {

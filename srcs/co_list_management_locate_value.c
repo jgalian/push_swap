@@ -1,5 +1,10 @@
 #include "header.h"
 
+/*
+** This function locates in the stack passed as argument the smallest value
+** and returns it to the caller function.
+*/
+
 int	ft_list_smallest_value(t_stack *head)
 {
 	t_stack	*tmp;
@@ -17,6 +22,11 @@ int	ft_list_smallest_value(t_stack *head)
 		ret = tmp->value;
 	return (ret);
 }
+
+/*
+** This function locates in the stack passed as argument the smallest value
+** and returns its position in the list to the caller function.
+*/
 
 int	ft_list_smallest_value_position(t_stack *head)
 {
@@ -44,6 +54,11 @@ int	ft_list_smallest_value_position(t_stack *head)
 	return (position);
 }
 
+/*
+** This function locates in the stack passed as argument the smallest value
+** and returns it to the caller function.
+*/
+
 int	ft_list_greatest_value(t_stack *head)
 {
 	t_stack	*tmp;
@@ -61,6 +76,11 @@ int	ft_list_greatest_value(t_stack *head)
 		ret = tmp->value;
 	return (ret);
 }
+
+/*
+** This function locates in the stack passed as argument the greatest value
+** and returns its position in the list to the caller function.
+*/
 
 int	ft_list_greatest_value_position(t_stack *head)
 {

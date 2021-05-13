@@ -1,7 +1,7 @@
 #include "header.h"
 
 /*
-** This function swaps first and second element in the list A
+** This function swaps first and second element in the list passed as argument
 */
 
 void	ft_swap(t_stack *head)
@@ -14,7 +14,7 @@ void	ft_swap(t_stack *head)
 }
 
 /*
-** This function swaps first and second element in lists A and B
+** This function swaps first and second element in list A
 */
 
 void	ft_sa(t_all *all)
@@ -23,11 +23,19 @@ void	ft_sa(t_all *all)
 	write(1, "sa\n", 3);
 }
 
+/*
+** This function swaps first and second element in list B
+*/
+
 void	ft_sb(t_all *all)
 {
 	ft_swap(all->b);
 	write(1, "sb\n", 3);
 }
+
+/*
+** This function swaps first and second element in lists A and B
+*/
 
 void	ft_ss(t_all *all)
 {

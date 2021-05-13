@@ -22,7 +22,7 @@ int	ft_list_lenght(t_stack *head)
 }
 
 /*
-** This function insert one new element at the top of the list
+** This function inserts one new element at the top of the list
 */
 
 void	ft_push_top(t_stack **head, int value)
@@ -44,7 +44,7 @@ void	ft_push_top(t_stack **head, int value)
 }
 
 /*
-** This function get the first element out of the list
+** This function gets the first element out of the list
 */
 
 void	ft_del_top(t_stack **head)
@@ -66,6 +66,10 @@ void	ft_del_top(t_stack **head)
 	}
 }
 
+/*
+** This function retunns if the list is sorted from smaller to bigger
+*/
+
 int	ft_is_stack_sorted(t_stack *head)
 {
 	t_stack	*tmp;
@@ -80,6 +84,10 @@ int	ft_is_stack_sorted(t_stack *head)
 	}
 	return (TRUE);
 }
+
+/*
+** This function retunns if the list is sorted from bigger to smaller
+*/
 
 int	ft_is_stack_reverse_sorted(t_stack *head)
 {

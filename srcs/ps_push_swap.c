@@ -2,10 +2,12 @@
 
 /*
 ** Push_swap program should receive as argument a list of integers. It has to
-** fill the stack A with theese numbers. And then, using a limited type of
+** fill the stack A with those numbers. And then, using a limited type of
 ** instructions, with help of stack B (empty at the begining), get them sorted
-** with the smallest number at the top of stack A. It should use the smallest
+** in stack A, from the smallest to the biggest. It should use the smallest
 ** list of instructions possible.
+** The program has 3 different functions to be used depending on the number of
+** elements in the stack A at the beggining.
 */
 
 int	main(int argc, char **argv)
@@ -33,6 +35,10 @@ int	main(int argc, char **argv)
 	ft_clean_up(all);
 	return (0);
 }
+
+/*
+** This function works when the number of elements is less than 5.
+*/
 
 void	ft_ps_3(t_all *all, int n_elements)
 {
@@ -62,6 +68,11 @@ void	ft_ps_3(t_all *all, int n_elements)
 	}
 }
 
+/*
+** This funtion works when there are between 5 and 50 elements. It has a
+** specific algorithm for 5 numbers and other for the rest.
+*/
+
 void	ft_ps_5(t_all *all, int n_elements)
 {
 	int	i;
@@ -84,6 +95,20 @@ void	ft_ps_5(t_all *all, int n_elements)
 			ft_pa(all);
 	}
 }
+
+/*
+** This funtion works when there are more than 50 elements. It is going to
+** divide all the elements in some chunks. Depends on the number of
+** elements is going to be different number of chunks. Once the number of
+** chunks has been determined, funtion gets the distance between the smallest
+** and biggest numbers and divided it to get the limits of each chunk.
+** Once the limit of the chunks have been determined, it uses the quick_sort
+** algorith to send to stack B all the numbers. The smallest elements will be
+** sent in the first place, to be at the botton of stack B. This will be
+** repeated until all the elements be in stack B.
+** Then, function insertion_sort() will be used to send all the elements back
+** to stack A in order.
+*/
 
 void	ft_ps_big(t_all *all, int n_elements)
 {

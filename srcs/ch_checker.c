@@ -1,11 +1,11 @@
 #include "header.h"
 
 /*
-** Push_swap program should receive as argument a list of integers. First, it
-** has to get stack A filled with those numbers. Then, using a limited type of
-** instructions, and with the help of stack B (empty at the begining), should
-** get them sorted on the stack A, with the smallest number of movements.
-** Smallest numbers should be at the begging.
+** Checker program should receive as argument a list of integers. First, it
+** has to get stack A filled with those numbers. Then, it should read from
+** standard imput the instructions to get the stack sorted. Once it finishs
+** reading, it should execute the instructions over the pile. And finally
+** it should checks if stack A is sorted or not and print a OK or KO message.
 */
 
 int	main(int argc, char **argv)

@@ -1,5 +1,13 @@
 #include "header.h"
 
+/*
+** This function searchs for the smallest value in the stack A and pushes it to
+** the stack B. In order to do that more efficiently, it should check if the
+** smallest value is in the upper half of the list or in the lower half. And
+** depending on that, is going to use rotate() o reverse_rotate() functions to
+** move it to the first place, where it can be pushed to list B.
+*/
+
 void	ft_insertion_sort_a(t_all *all)
 {
 	int	n_elements;
@@ -22,6 +30,14 @@ void	ft_insertion_sort_a(t_all *all)
 			ft_rra(all);
 	ft_pb(all);
 }
+
+/*
+** This function searchs for the smallest value in the stack B and pushes it to
+** the stack A. In order to do that more efficiently, it should check if the
+** smallest value is in the upper half of the list or in the lower half. And
+** depending on that, is going to use rotate() o reverse_rotate() functions to
+** move it to the first place, where it can be pushed to list A.
+*/
 
 void	ft_insertion_sort_b(t_all *all)
 {

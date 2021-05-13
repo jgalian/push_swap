@@ -5,12 +5,10 @@
 ** as arguments for the program. It uses two arrays of ints to check if any of
 ** those mumbers are duplicated. One array is for the positive and the other for
 ** the negative nubers. Function starts setting all the positions in the array
-** with 0. Both arrays have space for 500 elements because is the maximum
-** number of elements that the program should check. Then calls function
-** process_arguments() in order to convert the strigs passed as arguments to
-** ints. Inside that function also is checked if the numbers are too big or too
-** small. Finally, this function push to the top of the stack A the number
-** after checks that it is not duplicated.
+** with 0. Then calls function process_arguments() in order to convert the
+** strigs passed as arguments to ints. Inside that function also is checked if
+** the numbers are too big or too small. Finally, this function push to the top
+** of the stack A the number after checks that it is not duplicated.
 */
 
 void	ft_set_initial_stack(t_stack **head, char **argv)

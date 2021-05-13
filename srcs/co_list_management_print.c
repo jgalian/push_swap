@@ -1,7 +1,7 @@
 #include "header.h"
 
 /*
-** This function prints out the values of all elements in the list
+** This function prints out the value of all nodes in the list or stack
 */
 
 void	ft_print_list(t_stack *head)
@@ -22,6 +22,10 @@ void	ft_print_list(t_stack *head)
 		write(1, "\n", 1);
 	}
 }
+
+/*
+** This function prints out the value of all nodes in both lists
+*/
 
 void	ft_print_all_lists(t_all *all)
 {
