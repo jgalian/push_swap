@@ -26,26 +26,21 @@ typedef struct s_all
 /*
 ** push_swap.c
 */
-void	ft_ps_3(t_all *all);
-void	ft_ps_5(t_all *all);
-void	ft_ps_100(t_all *all);
-void	ft_ps_500(t_all *all);
+void	ft_ps_3(t_all *all, int n_elements);
+void	ft_ps_5(t_all *all, int n_elements);
+void	ft_ps_big(t_all *all, int n_elements);
+int		ft_get_chunk_length(t_all *all, int min, int chunks);
 
 /*
 ** ps_quick_sort.c
 */
 void	ft_quick_sort_stack_a(t_all *all, int average);
-void	ft_quick_sort_stack_b(t_all *all, int average);
 
 /*
 ** ps_insertion_sort
 */
-void	ft_insertion_sort_100(t_all *all);
-void	ft_insertion_sort_500_a(t_all *all);
-void	ft_exec_insert_sort_500_a_biggest(t_all *all, int pos_biggest, \
-		int rotations_biggest, int n_elements);
-void	ft_exec_insert_sort_500_a_smallest(t_all *all, int pos_smallest, \
-		int rotations_smallest, int n_elements);
+void	ft_insertion_sort_a(t_all *all);
+void	ft_insertion_sort_b(t_all *all);
 
 /*
 ** ch_checker.c

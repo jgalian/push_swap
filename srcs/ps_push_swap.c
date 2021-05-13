@@ -24,84 +24,106 @@ int	main(int argc, char **argv)
 	n_elements = ft_list_lenght(all->a);
 	if (!n_elements)
 		return (1);
-	else if (n_elements == 3)
-		ft_ps_3(all);
-	else if (n_elements <= 5)
-		ft_ps_5(all);
-	else if (n_elements <= 100)
-		ft_ps_100(all);
+	else if (n_elements <= 4)
+		ft_ps_3(all, n_elements);
+	else if (n_elements > 4 && n_elements < 50)
+		ft_ps_5(all, n_elements);
 	else
-		ft_ps_500(all);
+		ft_ps_big(all, n_elements);
 	ft_clean_up(all);
 	return (0);
 }
 
-void	ft_ps_3(t_all *all)
+void	ft_ps_3(t_all *all, int n_elements)
 {
-	if (ft_list_smallest_value_position(all->a) == 0)
-		ft_ra(all);
-	else if (ft_list_smallest_value_position(all->a) == 1)
+	if (n_elements == 1)
+		return ;
+	else if (n_elements == 2)
+	{
+		if (!ft_is_stack_sorted(all->a))
+			ft_sa(all);
+	}
+	else if (n_elements == 3)
+	{
+		if (ft_list_smallest_value_position(all->a) == 0)
+			ft_ra(all);
+		else if (ft_list_smallest_value_position(all->a) == 1)
+			ft_rra(all);
+		if (all->a->value > all->a->prev->value)
+			ft_sa(all);
 		ft_rra(all);
-	if (all->a->value > all->a->prev->value)
-		ft_sa(all);
-	ft_rra(all);
+	}
+	else
+	{
+		while (all->a)
+			ft_insertion_sort_a(all);
+		while (all->b)
+			ft_pa(all);
+	}
 }
 
-void	ft_ps_5(t_all *all)
+void	ft_ps_5(t_all *all, int n_elements)
 {
 	int	i;
 
-	i = 4;
-	while (--i > 0)
-		ft_insertion_sort_100(all);
-	if (!ft_is_stack_sorted(all->a))
-		ft_sa(all);
-	while (all->b)
-		ft_pa(all);
-}
-
-void	ft_ps_100(t_all *all)
-{
-	int	average;
-
-	while (all->a->prev)
+	if (n_elements == 5)
 	{
-		average = ft_list_values_average(all->a);
-		ft_quick_sort_stack_a(all, average);
+		i = 4;
+		while (--i > 0)
+			ft_insertion_sort_a(all);
+		if (!ft_is_stack_sorted(all->a))
+			ft_sa(all);
+		while (all->b)
+			ft_pa(all);
 	}
-	while (all->b && !ft_is_stack_reverse_sorted(all->b))
-	{
-		average = ft_list_values_average(all->b);
-		ft_quick_sort_stack_b(all, average);
-	}
-	while (all->a && !ft_is_stack_sorted(all->a))
-		ft_insertion_sort_100(all);
-	while (all->b)
-		ft_pa(all);
-}
-
-void	ft_ps_500(t_all *all)
-{
-	int	average;
-
-	while (all->a->prev)
-	{
-		average = ft_list_values_average(all->a);
-		ft_quick_sort_stack_a(all, average);
-	}
-	while (all->b && !ft_is_stack_reverse_sorted(all->b))
-	{
-		average = ft_list_values_average(all->b);
-		ft_quick_sort_stack_b(all, average);
-	}
-	while (all->a && !ft_is_stack_sorted(all->a))
-		ft_insertion_sort_500_a(all);
-	if (ft_list_greatest_value_position(all->b) <= ft_list_lenght(all->b) / 2)
-		while (all->b->value != ft_list_greatest_value(all->b))
-			ft_rb(all);
 	else
-		while (all->b->value != ft_list_greatest_value(all->b))
-			ft_rrb(all);
+	{
+		while (all->a)
+			ft_insertion_sort_a(all);
+		while (all->b)
+			ft_pa(all);
+	}
+}
+
+void	ft_ps_big(t_all *all, int n_elements)
+{
+	int	chunks_length;
+	int	i;
+	int	min;
+	int chunks;
+
+	if (n_elements >= 50 && n_elements < 100)
+		chunks = 4;
+	else if (n_elements >= 100 && n_elements < 200)
+		chunks = 6;
+	else if (n_elements >= 200 && n_elements < 325)
+		chunks = 8;
+	else if (n_elements >= 325 && n_elements < 450)
+		chunks = 10;
+	else
+		chunks = 13;
+	min = ft_list_smallest_value(all->a);
+	chunks_length = ft_get_chunk_length(all, min, chunks);
+	i = -1;
+	while (++i < chunks -1 )
+		ft_quick_sort_stack_a(all, min + chunks_length * (i + 1));
+	while (all->a)
+		ft_pb(all);
 	while (all->b)
-		ft_pa(all);
+		ft_insertion_sort_b(all);
+}
+
+int	ft_get_chunk_length(t_all *all, int min, int chunks)
+{
+	int	chunks_length;
+	int max;
+
+	max = ft_list_greatest_value(all->a);
+	if (max < 0 && min < 0)
+		chunks_length = (min - max) / chunks;
+	if (max > 0 && min > 0)
+		chunks_length = (max - min) / chunks;
+	else
+		chunks_length = ((min * -1) + max) / chunks;
+	return (chunks_length);
 }

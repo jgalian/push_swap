@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		execute_instructions(instructions[i], all);
 	ft_check_if_sorted(all);
 	instructions = ft_free_matrix(instructions);
+	ft_print_all_lists(all);
 	ft_clean_up(all);
 	return (0);
 }
