@@ -16,21 +16,19 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	if (argc > 2)
-		ft_error();
 	all = (t_all *)malloc(sizeof(t_all));
 	if (!all)
 		ft_error();
 	all->a = NULL;
 	all->b = NULL;
-	ft_set_initial_stack(&all->a, argv);
+	ft_set_initial_stack(&all->a, argc, argv);
 	instructions = read_stdin();
 	i = -1;
 	while (instructions[++i])
 		execute_instructions(instructions[i], all);
 	ft_check_if_sorted(all);
 	instructions = ft_free_matrix(instructions);
-	ft_print_all_lists(all);
+	//ft_print_all_lists(all);
 	ft_clean_up(all);
 	return (0);
 }
@@ -66,27 +64,27 @@ char	**read_stdin(void)
 void	execute_instructions(char *ins, t_all *all)
 {
 	if (ins[0] == 's' && ins[1] == 'a' && ins[2] == '\0')
-		ft_sa(all);
+		ft_ch_sa(all);
 	else if (ins[0] == 's' && ins[1] == 'b' && ins[2] == '\0')
-		ft_sb(all);
+		ft_ch_sb(all);
 	else if (ins[0] == 's' && ins[1] == 's' && ins[2] == '\0')
-		ft_ss(all);
+		ft_ch_ss(all);
 	else if (ins[0] == 'p' && ins[1] == 'a' && ins[2] == '\0')
-		ft_pa(all);
+		ft_ch_pa(all);
 	else if (ins[0] == 'p' && ins[1] == 'b' && ins[2] == '\0')
-		ft_pb(all);
+		ft_ch_pb(all);
 	else if (ins[0] == 'r' && ins[1] == 'a' && ins[2] == '\0')
-		ft_ra(all);
+		ft_ch_ra(all);
 	else if (ins[0] == 'r' && ins[1] == 'b' && ins[2] == '\0')
-		ft_rb(all);
+		ft_ch_rb(all);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == '\0')
-		ft_rr(all);
+		ft_ch_rr(all);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'a' && ins[3] == '\0')
-		ft_rra(all);
+		ft_ch_rra(all);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'b' && ins[3] == '\0')
-		ft_rrb(all);
+		ft_ch_rrb(all);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'r' && ins[3] == '\0')
-		ft_rrr(all);
+		ft_ch_rrr(all);
 	else
 		ft_error();
 }

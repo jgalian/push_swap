@@ -11,30 +11,33 @@
 ** of the stack A the number after checks that it is not duplicated.
 */
 
-void	ft_set_initial_stack(t_stack **head, char **argv)
+void	ft_set_initial_stack(t_stack **head, int argc, char **argv)
 {
 	int		i;
 	int		num;
-	int		positives[9999];
-	int		negatives[9999];
+	int		positives[SHRT_MAX];
+	int		negatives[SHRT_MAX];
 	char	**args;
 
-	ft_initialize_array(positives, 9999);
-	ft_initialize_array(negatives, 9999);
-	args = ft_split(argv[1], ' ');
-	i = ft_matrix_len(args);
-	while (--i >= 0)
+	ft_initialize_array(positives, SHRT_MAX);
+	ft_initialize_array(negatives, SHRT_MAX);
+	while (--argc > 0)
 	{
-		num = process_arguments(args, i);
-		if (num >= 0 && !positives[num])
-			positives[num] = 1;
-		else if (num < 0 && !negatives[num * -1])
-			negatives[num * -1] = 1;
-		else
-			ft_error();
-		ft_push_top(head, num);
+		args = ft_split(argv[argc], ' ');
+		i = ft_matrix_len(args);
+		while (--i >= 0)
+		{
+			num = process_arguments(args, i);
+			if (num >= 0 && !positives[num])
+				positives[num] = 1;
+			else if (num < 0 && !negatives[num * -1])
+				negatives[num * -1] = 1;
+			else
+				ft_error();
+			ft_push_top(head, num);
+		}
+		ft_free_matrix(args);
 	}
-	ft_free_matrix(args);
 }
 
 void	ft_initialize_array(int *array, int num)
@@ -60,7 +63,7 @@ int	process_arguments(char **argv, int i)
 	int	atoi_ret_val;
 	int	j;
 
-	atoi_ret_val = atoi(argv[i]);
+	atoi_ret_val = ft_atoi(argv[i]);
 	if (atoi_ret_val == 0)
 	{
 		j = -1;
@@ -70,7 +73,12 @@ int	process_arguments(char **argv, int i)
 				ft_error();
 		}
 	}
-	if (atoi_ret_val < SHRT_MIN || atoi_ret_val > SHRT_MAX)
+	else if (atoi_ret_val == -1)
+	{
+		if (argv[i][0] != '-' || argv[i][1] != '1')
+			ft_error();
+	}
+	if (atoi_ret_val < INT_MIN || atoi_ret_val > INT_MAX)
 		ft_error();
 	return (atoi_ret_val);
 }

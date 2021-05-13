@@ -15,14 +15,16 @@ int	main(int argc, char **argv)
 	t_all	*all;
 	int		n_elements;
 
-	if (argc != 2)
+	if (argc < 2)
 		return (1);
 	all = (t_all *)malloc(sizeof(t_all));
 	if (!all)
 		ft_error();
 	all->a = NULL;
 	all->b = NULL;
-	ft_set_initial_stack(&all->a, argv);
+	ft_set_initial_stack(&all->a, argc, argv);
+	if (ft_is_stack_sorted(all->a))
+		return (0);
 	n_elements = ft_list_lenght(all->a);
 	if (!n_elements)
 		return (1);
