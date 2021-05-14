@@ -1,26 +1,6 @@
 #include "header.h"
 
 /*
-** This function sends the first element to the end of the list so the second
-** element becomes the top one
-*/
-
-void	ft_rotate(t_stack **head)
-{
-	t_stack	*tmp;
-
-	if (!head || !(*head)->prev)
-		return ;
-	tmp = *head;
-	while (tmp->prev != NULL)
-		tmp = tmp->prev;
-	tmp->prev = *head;
-	tmp = tmp->prev;
-	*head = tmp->prev;
-	tmp->prev = NULL;
-}
-
-/*
 ** This function calls the rotation function for stack A
 */
 

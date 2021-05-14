@@ -21,7 +21,7 @@ typedef struct s_all
 }					t_all;
 
 /*
-** push_swap.c
+** ps_push_swap.c
 */
 void	ft_ps_3(t_all *all, int n_elements);
 void	ft_ps_5(t_all *all, int n_elements);
@@ -82,6 +82,13 @@ int		ft_found_equal_or_smaller(t_stack *head, int num);
 int		ft_found_equal_or_bigger(t_stack *head, int num);
 
 /*
+** co_operations.c
+*/
+void	ft_reverse_rotate(t_stack **head);
+void	ft_rotate(t_stack **head);
+void	ft_swap(t_stack *head);
+
+/*
 ** ps_operation_push.c
 */
 void	ft_pa(t_all *all);
@@ -90,7 +97,6 @@ void	ft_pb(t_all *all);
 /*
 ** ps_operation_reverse_rotate.c
 */
-void	ft_reverse_rotate(t_stack **head);
 void	ft_rra(t_all *all);
 void	ft_rrb(t_all *all);
 void	ft_rrr(t_all *all);
@@ -98,7 +104,6 @@ void	ft_rrr(t_all *all);
 /*
 ** ps_operation_rotate.c
 */
-void	ft_rotate(t_stack **head);
 void	ft_ra(t_all *all);
 void	ft_rb(t_all *all);
 void	ft_rr(t_all *all);
@@ -106,40 +111,17 @@ void	ft_rr(t_all *all);
 /*
 ** ps_operation_swap.c
 */
-void	ft_swap(t_stack *head);
 void	ft_sa(t_all *all);
 void	ft_sb(t_all *all);
 void	ft_ss(t_all *all);
 
-
 /*
-** ch_operation_push.c
+** ch_operations.c
 */
 void	ft_ch_pa(t_all *all);
 void	ft_ch_pb(t_all *all);
-
-/*
-** ch_operation_reverse_rotate.c
-*/
-void	ft_ch_reverse_rotate(t_stack **head);
-void	ft_ch_rra(t_all *all);
-void	ft_ch_rrb(t_all *all);
 void	ft_ch_rrr(t_all *all);
-
-/*
-** ch_operation_rotate.c
-*/
-void	ft_ch_rotate(t_stack **head);
-void	ft_ch_ra(t_all *all);
-void	ft_ch_rb(t_all *all);
 void	ft_ch_rr(t_all *all);
-
-/*
-** ch_operation_swap.c
-*/
-void	ft_ch_swap(t_stack *head);
-void	ft_ch_sa(t_all *all);
-void	ft_ch_sb(t_all *all);
 void	ft_ch_ss(t_all *all);
 
 /*

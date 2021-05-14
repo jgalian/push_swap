@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 		execute_instructions(instructions[i], all);
 	ft_check_if_sorted(all);
 	instructions = ft_free_matrix(instructions);
-	//ft_print_all_lists(all);
 	ft_clean_up(all);
 	return (0);
 }
@@ -64,9 +63,9 @@ char	**read_stdin(void)
 void	execute_instructions(char *ins, t_all *all)
 {
 	if (ins[0] == 's' && ins[1] == 'a' && ins[2] == '\0')
-		ft_ch_sa(all);
+		ft_swap(all->a);
 	else if (ins[0] == 's' && ins[1] == 'b' && ins[2] == '\0')
-		ft_ch_sb(all);
+		ft_swap(all->b);
 	else if (ins[0] == 's' && ins[1] == 's' && ins[2] == '\0')
 		ft_ch_ss(all);
 	else if (ins[0] == 'p' && ins[1] == 'a' && ins[2] == '\0')
@@ -74,15 +73,15 @@ void	execute_instructions(char *ins, t_all *all)
 	else if (ins[0] == 'p' && ins[1] == 'b' && ins[2] == '\0')
 		ft_ch_pb(all);
 	else if (ins[0] == 'r' && ins[1] == 'a' && ins[2] == '\0')
-		ft_ch_ra(all);
+		ft_rotate(&all->a);
 	else if (ins[0] == 'r' && ins[1] == 'b' && ins[2] == '\0')
-		ft_ch_rb(all);
+		ft_rotate(&all->b);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == '\0')
 		ft_ch_rr(all);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'a' && ins[3] == '\0')
-		ft_ch_rra(all);
+		ft_reverse_rotate(&all->a);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'b' && ins[3] == '\0')
-		ft_ch_rrb(all);
+		ft_reverse_rotate(&all->b);
 	else if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'r' && ins[3] == '\0')
 		ft_ch_rrr(all);
 	else

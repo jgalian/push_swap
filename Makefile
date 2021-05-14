@@ -4,8 +4,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -g
 INC = -Iincludes/ -I$(LIB_DIR)
 
-CHECKER_SRCS =	ch_checker.c ch_operation_reverse_rotate.c \
-				ch_operation_push.c ch_operation_rotate.c ch_operation_swap.c \
+CHECKER_SRCS =	ch_checker.c ch_operations.c co_operations.c\
 				co_set_initial_stack.c co_utils.c \
 				co_list_management.c \
 				co_list_management_locate_value.c \
@@ -16,7 +15,7 @@ CHECKER_OBJS =	$(CHECKER_SRCS:.c=.o)
 CHECKER_OBJ = $(addprefix $(OBJ_DIR),$(CHECKER_OBJS))
 
 PUSH_SWAP_SRCS =	ps_push_swap.c ps_quick_sort.c ps_insertion_sort.c \
-					co_list_management.c \
+					co_operations.c co_list_management.c \
 					co_list_management_locate_value.c \
 					co_list_management_print.c \
 					co_list_management_locate_value_2.c \

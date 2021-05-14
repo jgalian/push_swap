@@ -117,7 +117,7 @@ void	ft_ps_big(t_all *all, int n_elements)
 	int	chunks_length;
 	int	i;
 	int	min;
-	int chunks;
+	int	chunks;
 
 	if (n_elements >= 50 && n_elements < 100)
 		chunks = 4;
@@ -132,7 +132,7 @@ void	ft_ps_big(t_all *all, int n_elements)
 	min = ft_list_smallest_value(all->a);
 	chunks_length = ft_get_chunk_length(all, min, chunks);
 	i = -1;
-	while (++i < chunks -1 )
+	while (++i < chunks - 1)
 		ft_quick_sort_stack_a(all, min + chunks_length * (i + 1));
 	while (all->a)
 		ft_pb(all);
@@ -143,7 +143,7 @@ void	ft_ps_big(t_all *all, int n_elements)
 int	ft_get_chunk_length(t_all *all, int min, int chunks)
 {
 	int	chunks_length;
-	int max;
+	int	max;
 
 	max = ft_list_greatest_value(all->a);
 	if (max < 0 && min < 0)
